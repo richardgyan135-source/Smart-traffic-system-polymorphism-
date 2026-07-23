@@ -1,0 +1,44 @@
+class TrafficDevice:
+    """Parent Class representing a generic traffic device."""
+    def activate(self):
+        raise NotImplementedError("Subclasses must implement the activate() method.")
+
+
+# Child Classes overriding activate()
+
+class TrafficLight(TrafficDevice):
+    def activate(self):
+        print("Traffic Light Activated: Changing signal sequence to RED/GREEN.")
+
+
+class SpeedCamera(TrafficDevice):
+    def activate(self):
+        print("Speed Camera Activated: Monitoring vehicle speeds and capturing photos.")
+
+
+class PedestrianSignal(TrafficDevice):
+    def activate(self):
+        print("Pedestrian Signal Activated: Displaying 'WALK' sign for pedestrians.")
+
+
+# New Class added without modifying the existing loop structure
+class EmergencySiren(TrafficDevice):
+    def activate(self):
+        print("Emergency Siren Activated: Sounding high-decibel alarm for emergency vehicles.")
+
+
+# Main execution demonstrating polymorphism
+if __name__ == "__main__":
+    # Create objects for each device
+    devices = [
+        TrafficLight(),
+        SpeedCamera(),
+        PedestrianSignal(),
+        EmergencySiren()  # Added seamlessly without changing the activation loop
+    ]
+
+    print("--- Activating Smart Traffic System Devices ---\n")
+    
+    # Activation loop: calls activate() on each object without checking its type
+    for device in devices:
+        device.activate()
